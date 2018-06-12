@@ -30,7 +30,7 @@ SOURCES += \
     src/editor_layout.cpp \
     src/image_manager.cpp \
     src/main.cpp \
-    src/main_window.cpp \
+    src/main_window.cpp
 
 HEADERS += \
     include/column_manager.h \
