@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="col">img/col.png</file>
+        <file alias="btc">img/btc.png</file>
+        <file alias="bth">img/bth.png</file>
+        <file alias="fxc">img/fxc.png</file>
+        <file alias="fxh">img/fxh.png</file>
+        <file alias="col_w">img/col_w.png</file>
+    </qresource>
+</RCC>
