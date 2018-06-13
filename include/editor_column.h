@@ -33,6 +33,8 @@ protected:
 private:
     void forceUpdateColumnWidth(EditorColumnWidth colWidth);
 
+    void paintDivisionBar(int y, bool isMeasureStart, QPainter &painter);
+
     ColumnManager *m_colManager;
 
     QColor m_bgColor = QColor(30, 36, 24);

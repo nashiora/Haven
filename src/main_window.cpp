@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    setMinimumSize(400, 300);
+
     ui->setupUi(this);
 
     m_layout = new EditorLayout(12, 24);
