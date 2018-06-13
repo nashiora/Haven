@@ -1,7 +1,7 @@
 #ifndef TOOL_COLORS_H
 #define TOOL_COLORS_H
 
-#define COLOR_SELECT     (QColor(0,  0,  0))
+#define COLOR_POS        (QColor(0,  0,  0))
 
 #define COLOR_BT_CHIP    (QColor(30, 36, 12))
 #define COLOR_BT_HOLD    (QColor(30, 36, 24))

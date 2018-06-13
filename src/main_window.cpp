@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_colManager.setLayout(m_layout);
 
-    s_tempColors.insert(Qt::Key_O, COLOR_SELECT);
+    s_tempColors.insert(Qt::Key_O, COLOR_POS);
 
     s_tempColors.insert(Qt::Key_H, COLOR_BT_CHIP);
     s_tempColors.insert(Qt::Key_J, COLOR_BT_HOLD);
