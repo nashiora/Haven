@@ -28,14 +28,24 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     QMainWindow::keyPressEvent(event);
 
-    int index = event->key() - Qt::Key_0;
-    if (index >= 0 && index <= 9)
+    switch (event->key())
     {
-        index--;
-        if (index == -1) index = 9;
+    case Qt::Key_QuoteLeft:
+        m_colManager.toggleDefaultColumnWidth();
+        break;
 
-        m_colManager.toggleColumnWidth(index);
+    default:
+        int index = event->key() - Qt::Key_0;
+        if (index >= 0 && index <= 9)
+        {
+            index--;
+            if (index == -1) index = 9;
+
+            m_colManager.toggleColumnWidth(index);
+        }
+        break;
     }
+
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)

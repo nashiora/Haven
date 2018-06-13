@@ -1,7 +1,8 @@
 #include "editor_column.h"
+#include "column_manager.h"
 
-EditorColumn::EditorColumn(ImageManager &imgs, QWidget *parent)
-    : QWidget(parent), m_imgs(imgs)
+EditorColumn::EditorColumn(ColumnManager *colManager, QWidget *parent)
+    : QWidget(parent), m_colManager(colManager)
 {
     forceUpdateColumnWidth(EditorColumnWidth::Standard);
 }
@@ -17,13 +18,13 @@ void EditorColumn::paintEvent(QPaintEvent *)
     int height = this->height();
 
     QPainter painter(this);
-    painter.fillRect(0, 0, width, height, m_bgColor);
+    painter.fillRect((width - COL_WIDTH) / 2, 0, width, height, m_bgColor);
 
     { // draw the column texture
         QRect targetRect(0, 0, width, height);
         QRect sourceRect(0, 0, width, 1);
 
-        painter.drawPixmap(targetRect, m_imgs.getColFor(m_colWidth), sourceRect);
+        painter.drawPixmap(targetRect, m_colManager->imgs().getColFor(m_colWidth), sourceRect);
     }
 }
 
@@ -37,5 +38,5 @@ void EditorColumn::setColumnWidth(EditorColumnWidth colWidth)
 void EditorColumn::forceUpdateColumnWidth(EditorColumnWidth colWidth)
 {
     m_colWidth = colWidth;
-    resize(colWidth == EditorColumnWidth::Standard ? HIGHWAY_WIDTH : 109, 0);
+    resize(colWidth == EditorColumnWidth::Standard ? COL_WIDTH : COL_WIDTH_EXT, 0);
 }

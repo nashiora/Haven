@@ -4,14 +4,15 @@
 #include <QtWidgets>
 
 #include "editor_column_data.h"
-#include "image_manager.h"
+
+class ColumnManager;
 
 class EditorColumn : public QWidget
 {
     Q_OBJECT
 
 public:
-    EditorColumn(ImageManager &imgs, QWidget *parent = nullptr);
+    EditorColumn(ColumnManager *colManager, QWidget *parent = nullptr);
 
     void applyData(const EditorColumnData &data);
 
@@ -32,9 +33,9 @@ protected:
 private:
     void forceUpdateColumnWidth(EditorColumnWidth colWidth);
 
-    ImageManager &m_imgs;
+    ColumnManager *m_colManager;
 
-    QColor m_bgColor = QColor(34, 2, 28);
+    QColor m_bgColor = QColor(0, 0, 0);
     EditorColumnWidth m_colWidth;
 };
 

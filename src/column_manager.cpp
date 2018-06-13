@@ -50,7 +50,7 @@ void ColumnManager::rearrangeColumns()
         {
             ensureColumnData(m_colData.count() + 1);
 
-            auto col = new EditorColumn(m_imgs);
+            auto col = new EditorColumn(this);
             col->applyData(m_colData[m_colOffset + m_cols.count()]);
 
             xMax = m_layout->addColumn(col);
@@ -64,7 +64,35 @@ void ColumnManager::rearrangeColumns()
 
 void ColumnManager::setDefaultColumnWidth(EditorColumnWidth colWidth)
 {
+    if (colWidth == m_colWidth) return;
     m_colWidth = colWidth;
+
+    for (int count = m_colData.count(), i = 0; i < count; i++)
+    {
+        EditorColumnData &data = m_colData[i];
+        if (!data.forceWidth)
+            data.columnWidth = colWidth;
+    }
+
+    EditorColumn *col; int i = 0;
+    foreach (col, m_cols)
+    {
+        int dataIndex = i + m_colOffset;
+        ensureColumnData(dataIndex + 1);
+        col->applyData(m_colData[dataIndex]);
+
+        i++;
+    }
+
+    rearrangeColumns();
+    m_layout->update();
+}
+
+void ColumnManager::toggleDefaultColumnWidth()
+{
+    if (m_colWidth == EditorColumnWidth::Standard)
+        setDefaultColumnWidth(EditorColumnWidth::Extended);
+    else setDefaultColumnWidth(EditorColumnWidth::Standard);
 }
 
 bool ColumnManager::toggleColumnWidth(int index)
@@ -75,8 +103,11 @@ bool ColumnManager::toggleColumnWidth(int index)
         col->toggleColumnWidth();
 
         int dataIndex = index + m_colOffset;
-        assert(dataIndex >= 0 && dataIndex < m_colData.count());
-        m_colData[dataIndex].toggleColumnWidth();
+        ensureColumnData(dataIndex + 1);
+        auto data = &m_colData[dataIndex];
+
+        data->toggleColumnWidth();
+        data->forceWidth = data->columnWidth != m_colWidth;
 
         rearrangeColumns();
         m_layout->update();

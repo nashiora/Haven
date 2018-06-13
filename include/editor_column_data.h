@@ -1,8 +1,11 @@
 #ifndef EDITOR_COLUMN_DATA_H
 #define EDITOR_COLUMN_DATA_H
 
-const int LANE_WIDTH = 9;
-const int HIGHWAY_WIDTH = LANE_WIDTH * 6 + 5;
+const int COL_LANE_WIDTH = 9;
+const int COL_BORDER_WIDTH = 1;
+
+const int COL_WIDTH = 59;
+const int COL_WIDTH_EXT = 109;
 
 enum class EditorColumnWidth
 {
@@ -12,7 +15,8 @@ enum class EditorColumnWidth
 
 struct EditorColumnData
 {
-    EditorColumnWidth columnWidth;
+    EditorColumnWidth columnWidth = EditorColumnWidth::Standard;
+    bool forceWidth = false;
 
     void toggleColumnWidth()
     {

@@ -18,7 +18,11 @@ public:
 
     EditorColumnWidth defaultColumnWidth() const { return m_colWidth; }
     void setDefaultColumnWidth(EditorColumnWidth colWidth);
+    void toggleDefaultColumnWidth();
+
     bool toggleColumnWidth(int index);
+
+    const ImageManager &imgs() { return m_imgs; }
 
 private:
     int containerWidth() const
