@@ -30,9 +30,7 @@ SOURCES += \
     src/editor_layout.cpp \
     src/image_manager.cpp \
     src/main.cpp \
-    src/main_window.cpp \
-    src/chart.cpp \
-    src/chart_builder.cpp
+    src/main_window.cpp
 
 HEADERS += \
     include/column_manager.h \
@@ -41,8 +39,7 @@ HEADERS += \
     include/editor_layout.h \
     include/image_manager.h \
     include/main_window.h \
-    include/chart.h \
-    include/chart_builder.h
+    include/tool_colors.h
 
 FORMS += \
     main_window.ui

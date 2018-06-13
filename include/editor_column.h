@@ -25,7 +25,7 @@ public:
         else forceUpdateColumnWidth(EditorColumnWidth::Standard);
     }
 
-    void setBgColor(QColor color) { m_bgColor = color; }
+    void setBackgroundColor(QColor color) { m_bgColor = color; repaint(); }
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -35,7 +35,7 @@ private:
 
     ColumnManager *m_colManager;
 
-    QColor m_bgColor = QColor(0, 0, 0);
+    QColor m_bgColor = QColor(30, 36, 24);
     EditorColumnWidth m_colWidth;
 };
 

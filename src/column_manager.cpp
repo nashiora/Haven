@@ -51,6 +51,7 @@ void ColumnManager::rearrangeColumns()
             ensureColumnData(m_colData.count() + 1);
 
             auto col = new EditorColumn(this);
+            col->setBackgroundColor(m_bgColor);
             col->applyData(m_colData[m_colOffset + m_cols.count()]);
 
             xMax = m_layout->addColumn(col);

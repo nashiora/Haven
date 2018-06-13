@@ -18,7 +18,11 @@ void EditorColumn::paintEvent(QPaintEvent *)
     int height = this->height();
 
     QPainter painter(this);
-    painter.fillRect((width - COL_WIDTH) / 2, 0, width, height, m_bgColor);
+
+    { // draw the bg fill
+        int bgWidth = COL_WIDTH - 2 * COL_LANE_WIDTH;
+        painter.fillRect((width - bgWidth) / 2, 0, bgWidth, height, m_bgColor);
+    }
 
     { // draw the column texture
         QRect targetRect(0, 0, width, height);

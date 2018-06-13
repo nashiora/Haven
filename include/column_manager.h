@@ -22,6 +22,16 @@ public:
 
     bool toggleColumnWidth(int index);
 
+    void setBackgroundColor(QColor color)
+    {
+        if (color == m_bgColor) return;
+        m_bgColor = color;
+
+        EditorColumn *col;
+        foreach (col, m_cols)
+            col->setBackgroundColor(m_bgColor);
+    }
+
     const ImageManager &imgs() { return m_imgs; }
 
 private:
@@ -48,11 +58,12 @@ private:
     }
 
     EditorColumnWidth m_colWidth = EditorColumnWidth::Standard;
-    EditorLayout *m_layout;
+    QColor m_bgColor;
 
+    EditorLayout *m_layout;
     ImageManager m_imgs;
 
-    int m_colOffset;
+    int m_colOffset = 0;
     QList<EditorColumn *> m_cols;
     QList<EditorColumnData> m_colData;
 };
