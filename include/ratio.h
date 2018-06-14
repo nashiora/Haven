@@ -1,6 +1,15 @@
 #ifndef INCLUDEATIO_BASE_H
 #define INCLUDEATIO_BASE_H
 
+// :local
+// I have plans for this to support "invalid" ratios as
+//  N / 0 where N can either be -1, 0 or 1 for -INF, NaN and +INF.
+// We can always throw or assert if that happens instead,
+//  since this doesn't HAVE to be super general purpose and invalid
+//  chart positions and such are likely VERY bad.
+
+// TODO(local): all of the ratio conversion and operator functions
+
 class rat
 {
 public:

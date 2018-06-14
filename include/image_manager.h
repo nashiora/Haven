@@ -5,6 +5,17 @@
 
 #include "editor_column_data.h"
 
+// :local
+// I'm not sure how I want to handle this kinda stuff in the long run,
+//  but we only need access to a few image resources so a huge system
+//  for dynamically handling image loads/unloads seems unnecessary.
+// This simply initializes every QPixmap from a binary resource
+//  (where the `:` prefix means Qts resources, as described in the
+//   resources.rc file in this project) and allows const references
+//  to those fields for use.
+
+// TODO(local): see if resource management is needed
+
 class ImageManager
 {
 public:
