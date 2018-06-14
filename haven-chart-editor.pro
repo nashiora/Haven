@@ -30,7 +30,8 @@ SOURCES += \
     src/editor_layout.cpp \
     src/image_manager.cpp \
     src/main.cpp \
-    src/main_window.cpp
+    src/main_window.cpp \
+    src/ratio.cpp
 
 HEADERS += \
     include/column_manager.h \
@@ -39,7 +40,8 @@ HEADERS += \
     include/editor_layout.h \
     include/image_manager.h \
     include/main_window.h \
-    include/tool_colors.h
+    include/tool_colors.h \
+    include/ratio.h
 
 FORMS += \
     main_window.ui
