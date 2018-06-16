@@ -75,18 +75,6 @@ void MainWindow::showEvent(QShowEvent *event)
     m_colManager.rearrangeColumns();
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *event)
-{
-    QMainWindow::keyPressEvent(event);
-
-    switch (event->key())
-    {
-    case Qt::Key_QuoteLeft:
-        m_colManager.toggleDefaultColumnWidth();
-        break;
-    }
-}
-
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
