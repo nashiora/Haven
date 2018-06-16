@@ -33,6 +33,9 @@ such that a value of +/-36 is a full rotation back to its origin.
 The highway is free to rotate endlessly in each direction.
 See SDVX III's April fools day chart for an example of that in action.
 
+- Reverse: In a reverse section the playable objects will scroll in
+the opposite direction, away from the camera instead of towards it.
+
 - Roll: The angle of the highway around the Z axis.
 This is the kind of rotation that lasers apply during gameplay.
 The charter can also control the base amount of roll applied to the highway,
@@ -64,7 +67,7 @@ at around 80 degrees and coming to a halt slightly after a full swing.
 The duration can be changed by the charter.
 The intensity of a swing should likely be configurable by the charter.
 
-- Toggle: The highway fades in or out of view, but all playables
+- Hide: The highway fades out of view, but all playables
 can still be seen by the player.
 
 - Zoom: The distance of the critical line from the camera.
