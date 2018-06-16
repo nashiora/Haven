@@ -39,6 +39,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionSelect_All, &QAction::triggered, this, &MainWindow::selectAll);
     connect(ui->actionDeselect, &QAction::triggered, this, &MainWindow::deselect);
 
+    connect(ui->actionExtended_column_width, &QAction::toggled, this, &MainWindow::setColumnWidthExtended);
+
     connect(ui->actionPosition, &QAction::triggered, this, &MainWindow::tool_Position);
 
     connect(ui->actionBT, &QAction::triggered, this, &MainWindow::tool_Bt);
@@ -149,6 +151,12 @@ void MainWindow::selectAll()
 void MainWindow::deselect()
 {
     qInfo() << "deselect";
+}
+
+void MainWindow::setColumnWidthExtended(bool checked)
+{
+    qInfo() << "set column width extended";
+    m_colManager.setDefaultColumnWidth(checked ? ColumnWidth::Extended : ColumnWidth::Standard);
 }
 
 void MainWindow::tool_Position()

@@ -47,6 +47,10 @@ private slots:
     void selectAll();
     void deselect();
 
+    // VIEW
+
+    void setColumnWidthExtended(bool checked);
+
     // TOOLS: Default
 
     void tool_Position();
