@@ -7,22 +7,29 @@ const int COL_BORDER_WIDTH = 1;
 const int COL_WIDTH = 59;
 const int COL_WIDTH_EXT = 109;
 
-enum class EditorColumnWidth
+enum class ColumnWidth
 {
     Standard,
     Extended,
 };
 
+enum class ColumnBgWidth
+{
+    Fill,
+    BtOnly,
+    BtVol,
+};
+
 struct EditorColumnData
 {
-    EditorColumnWidth columnWidth = EditorColumnWidth::Standard;
+    ColumnWidth columnWidth = ColumnWidth::Standard;
     bool forceWidth = false;
 
     void toggleColumnWidth()
     {
-        if (columnWidth == EditorColumnWidth::Standard)
-            columnWidth = EditorColumnWidth::Extended;
-        else columnWidth = EditorColumnWidth::Standard;
+        if (columnWidth == ColumnWidth::Standard)
+            columnWidth = ColumnWidth::Extended;
+        else columnWidth = ColumnWidth::Standard;
     }
 };
 

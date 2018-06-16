@@ -37,8 +37,8 @@ public:
     void rearrangeColumns();
 
     // The default column width is what all non-forced columns will display with.
-    EditorColumnWidth defaultColumnWidth() const { return m_colWidth; }
-    void setDefaultColumnWidth(EditorColumnWidth colWidth);
+    ColumnWidth defaultColumnWidth() const { return m_colWidth; }
+    void setDefaultColumnWidth(ColumnWidth colWidth);
     // Toggle the default column width, rather than figuring it out manually.
     void toggleDefaultColumnWidth();
 
@@ -63,6 +63,18 @@ public:
         EditorColumn *col;
         foreach (col, m_cols)
             col->setBackgroundColor(m_bgColor);
+    }
+
+    // Changes how wide the background fill on a column is.
+    // Used to help distinguish which tool is in use as in KSE.
+    void setBackgroundWidth(ColumnBgWidth width)
+    {
+        if (width == m_bgWidth) return;
+        m_bgWidth = width;
+
+        EditorColumn *col;
+        foreach (col, m_cols)
+            col->setBackgroundWidth(m_bgWidth);
     }
 
     // the image manager this column manager uses.
@@ -102,8 +114,9 @@ private:
             m_colData.append(EditorColumnData());
     }
 
-    EditorColumnWidth m_colWidth = EditorColumnWidth::Standard;
-    QColor m_bgColor;
+    ColumnWidth m_colWidth = ColumnWidth::Standard;
+    QColor m_bgColor = QColor(0, 0, 0);
+    ColumnBgWidth m_bgWidth = ColumnBgWidth::Fill;
 
     EditorLayout *m_layout;
     ImageManager m_imgs;

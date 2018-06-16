@@ -63,7 +63,7 @@ void ColumnManager::rearrangeColumns()
     }
 }
 
-void ColumnManager::setDefaultColumnWidth(EditorColumnWidth colWidth)
+void ColumnManager::setDefaultColumnWidth(ColumnWidth colWidth)
 {
     if (colWidth == m_colWidth) return;
     m_colWidth = colWidth;
@@ -91,9 +91,9 @@ void ColumnManager::setDefaultColumnWidth(EditorColumnWidth colWidth)
 
 void ColumnManager::toggleDefaultColumnWidth()
 {
-    if (m_colWidth == EditorColumnWidth::Standard)
-        setDefaultColumnWidth(EditorColumnWidth::Extended);
-    else setDefaultColumnWidth(EditorColumnWidth::Standard);
+    if (m_colWidth == ColumnWidth::Standard)
+        setDefaultColumnWidth(ColumnWidth::Extended);
+    else setDefaultColumnWidth(ColumnWidth::Standard);
 }
 
 bool ColumnManager::toggleColumnWidth(int index)

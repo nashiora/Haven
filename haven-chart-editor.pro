@@ -40,7 +40,6 @@ HEADERS += \
     include/editor_layout.h \
     include/image_manager.h \
     include/main_window.h \
-    include/tool_colors.h \
     include/ratio.h
 
 FORMS += \

@@ -16,29 +16,31 @@ public:
 
     void applyData(const EditorColumnData &data);
 
-    EditorColumnWidth columnWidth() const { return m_colWidth; }
-    void setColumnWidth(EditorColumnWidth colWidth);
+    ColumnWidth columnWidth() const { return m_colWidth; }
+    void setColumnWidth(ColumnWidth colWidth);
     void toggleColumnWidth()
     {
-        if (m_colWidth == EditorColumnWidth::Standard)
-            forceUpdateColumnWidth(EditorColumnWidth::Extended);
-        else forceUpdateColumnWidth(EditorColumnWidth::Standard);
+        if (m_colWidth == ColumnWidth::Standard)
+            forceUpdateColumnWidth(ColumnWidth::Extended);
+        else forceUpdateColumnWidth(ColumnWidth::Standard);
     }
 
     void setBackgroundColor(QColor color) { m_bgColor = color; repaint(); }
+    void setBackgroundWidth(ColumnBgWidth width) { m_bgWidth = width; repaint(); }
 
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
-    void forceUpdateColumnWidth(EditorColumnWidth colWidth);
+    void forceUpdateColumnWidth(ColumnWidth colWidth);
 
     void paintDivisionBar(int y, bool isMeasureStart, QPainter &painter);
 
     ColumnManager *m_colManager;
 
     QColor m_bgColor = QColor(30, 36, 24);
-    EditorColumnWidth m_colWidth;
+    ColumnBgWidth m_bgWidth = ColumnBgWidth::Fill;
+    ColumnWidth m_colWidth = ColumnWidth::Standard;
 };
 
 #endif // EDITOR_COLUMN_H

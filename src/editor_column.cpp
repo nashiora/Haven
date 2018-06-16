@@ -4,7 +4,7 @@
 EditorColumn::EditorColumn(ColumnManager *colManager, QWidget *parent)
     : QWidget(parent), m_colManager(colManager)
 {
-    forceUpdateColumnWidth(EditorColumnWidth::Standard);
+    forceUpdateColumnWidth(ColumnWidth::Standard);
 }
 
 void EditorColumn::applyData(const EditorColumnData &data)
@@ -20,7 +20,13 @@ void EditorColumn::paintEvent(QPaintEvent *)
     QPainter painter(this);
 
     { // draw the bg fill
-        int bgWidth = COL_WIDTH - 2 * COL_LANE_WIDTH;
+        int bgWidth;
+        switch (m_bgWidth)
+        {
+        case ColumnBgWidth::BtOnly: bgWidth = 4 * COL_LANE_WIDTH + 3 * COL_BORDER_WIDTH; break;
+        case ColumnBgWidth::BtVol:  bgWidth = 6 * COL_LANE_WIDTH + 5 * COL_BORDER_WIDTH; break;
+        case ColumnBgWidth::Fill:   bgWidth = width;                                     break;
+        }
         painter.fillRect((width - bgWidth) / 2, 0, bgWidth, height, m_bgColor);
     }
 
@@ -48,17 +54,17 @@ void EditorColumn::paintEvent(QPaintEvent *)
     }
 }
 
-void EditorColumn::setColumnWidth(EditorColumnWidth colWidth)
+void EditorColumn::setColumnWidth(ColumnWidth colWidth)
 {
     // don't update anything if we don't have to!
     if (colWidth == m_colWidth) return;
     forceUpdateColumnWidth(colWidth);
 }
 
-void EditorColumn::forceUpdateColumnWidth(EditorColumnWidth colWidth)
+void EditorColumn::forceUpdateColumnWidth(ColumnWidth colWidth)
 {
     m_colWidth = colWidth;
-    resize(colWidth == EditorColumnWidth::Standard ? COL_WIDTH : COL_WIDTH_EXT, 0);
+    resize(colWidth == ColumnWidth::Standard ? COL_WIDTH : COL_WIDTH_EXT, 0);
 }
 
 void EditorColumn::paintDivisionBar(int y, bool isMeasureStart, QPainter &painter)

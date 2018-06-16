@@ -21,9 +21,9 @@ class ImageManager
 public:
     ImageManager();
 
-    const QPixmap &getColFor(EditorColumnWidth colWidth) const
+    const QPixmap &getColFor(ColumnWidth colWidth) const
     {
-        if (colWidth == EditorColumnWidth::Standard)
+        if (colWidth == ColumnWidth::Standard)
             return col();
         else return col_w();
     }
