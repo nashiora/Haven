@@ -1,3 +1,4 @@
+#include "kshchart.h"
 #include "main_window.h"
 #include "ui_main_window.h"
 
@@ -14,20 +15,22 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_colManager.setLayout(m_layout);
 
-    ui->action_New->setShortcut(QKeySequence::New);
-    ui->action_Open->setShortcut(QKeySequence::Open);
-    ui->action_Save->setShortcut(QKeySequence::Save);
-    ui->actionSave_As->setShortcut(QKeySequence::SaveAs);
-
+    ui->mainToolBar->setIconSize(QSize(16, 16));
     ui->mainToolBar->addAction(ui->action_New);
     ui->mainToolBar->addAction(ui->action_Open);
     ui->mainToolBar->addAction(ui->action_Save);
     ui->mainToolBar->addAction(ui->actionSave_As);
+    ui->mainToolBar->addSeparator();
+    ui->mainToolBar->addAction(ui->actionCut);
+    ui->mainToolBar->addAction(ui->actionCopy);
+    ui->mainToolBar->addAction(ui->actionPaste);
+    ui->mainToolBar->addAction(ui->actionDelete);
 
     connect(ui->action_New, &QAction::triggered, this, &MainWindow::_new);
     connect(ui->action_Open, &QAction::triggered, this, &MainWindow::open);
     connect(ui->action_Save, &QAction::triggered, this, &MainWindow::save);
     connect(ui->actionSave_As, &QAction::triggered, this, &MainWindow::saveAs);
+    connect(ui->action_Close, &QAction::triggered, this, &MainWindow::_close);
 
     connect(ui->actionChart_Metadata, &QAction::triggered, this, &MainWindow::editMetadata);
     connect(ui->action_Undo, &QAction::triggered, this, &MainWindow::undo);
@@ -91,6 +94,34 @@ void MainWindow::_new()
 void MainWindow::open()
 {
     qInfo() << "open";
+
+    const QString DEFAULT_DIR_KEY("default_dir");
+    QSettings settings;
+
+    QString file = QFileDialog::getOpenFileName(this, "Select a chart",
+                                                settings.value(DEFAULT_DIR_KEY).toString(),
+                                                "K-Shoot MANIA Charts (*.ksh)");
+
+    if (file.isEmpty())
+        return;
+
+    QDir currentDir;
+    settings.setValue(DEFAULT_DIR_KEY, currentDir.absoluteFilePath(file));
+
+    qInfo() << "attempting to open chart file from: " << file;
+
+    if (file.endsWith(".ksh", Qt::CaseSensitivity::CaseInsensitive))
+    {
+        KshChart ksh(file);
+        if (!ksh.load())
+        {
+            qInfo() << "  failed to load ksh file!";
+            return;
+        }
+        else qInfo() << "  succeeded!";
+
+        // TODO(local): convert KshChart to Haven's internal format
+    }
 }
 
 void MainWindow::save()
@@ -101,11 +132,31 @@ void MainWindow::save()
 void MainWindow::saveAs()
 {
     qInfo() << "saveAs";
+
+    QStringList filters;
+    filters << "K-Shoot MANIA Charts (*.ksh)";
+
+    QFileDialog dialog(this);
+    dialog.setAcceptMode(QFileDialog::AcceptMode::AcceptSave);
+    dialog.setConfirmOverwrite(true);
+    dialog.setNameFilters(filters);
+
+    dialog.exec();
+
+    QStringList files = dialog.selectedFiles();
+    if (files.count() == 0)
+        return; // canceled or something
+
+    assert(files.count() == 1);
+    QString file = files.first();
+
+    qInfo() << "saving chart file to: " << file;
 }
 
-void MainWindow::close()
+void MainWindow::_close()
 {
     qInfo() << "close";
+    close();
 }
 
 void MainWindow::editMetadata()

@@ -31,7 +31,8 @@ SOURCES += \
     src/image_manager.cpp \
     src/main.cpp \
     src/main_window.cpp \
-    src/ratio.cpp
+    src/ratio.cpp \
+    src/kshchart.cpp
 
 HEADERS += \
     include/column_manager.h \
@@ -40,7 +41,8 @@ HEADERS += \
     include/editor_layout.h \
     include/image_manager.h \
     include/main_window.h \
-    include/ratio.h
+    include/ratio.h \
+    include/kshchart.h
 
 FORMS += \
     main_window.ui

@@ -205,6 +205,21 @@
    <addaction name="menuTools"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="toolTip">
+    <string>Toolbar</string>
+   </property>
+   <property name="statusTip">
+    <string>Toolbar</string>
+   </property>
+   <property name="whatsThis">
+    <string>Toolbar</string>
+   </property>
+   <property name="accessibleName">
+    <string>Toolbar</string>
+   </property>
+   <property name="accessibleDescription">
+    <string>Toolbar</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -214,6 +229,10 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_New">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/new</normaloff>:/new</iconset>
+   </property>
    <property name="text">
     <string>&amp;New</string>
    </property>
@@ -222,6 +241,10 @@
    </property>
   </action>
   <action name="action_Open">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/open</normaloff>:/open</iconset>
+   </property>
    <property name="text">
     <string>&amp;Open</string>
    </property>
@@ -230,6 +253,10 @@
    </property>
   </action>
   <action name="action_Save">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/save</normaloff>:/save</iconset>
+   </property>
    <property name="text">
     <string>&amp;Save</string>
    </property>
@@ -238,6 +265,10 @@
    </property>
   </action>
   <action name="actionSave_As">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/saveAs</normaloff>:/saveAs</iconset>
+   </property>
    <property name="text">
     <string>Save &amp;As...</string>
    </property>
@@ -246,6 +277,10 @@
    </property>
   </action>
   <action name="action_Close">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/exit</normaloff>:/exit</iconset>
+   </property>
    <property name="text">
     <string>&amp;Close</string>
    </property>
@@ -270,6 +305,10 @@
    </property>
   </action>
   <action name="actionCut">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/cut</normaloff>:/cut</iconset>
+   </property>
    <property name="text">
     <string>Cut</string>
    </property>
@@ -278,6 +317,10 @@
    </property>
   </action>
   <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/copy</normaloff>:/copy</iconset>
+   </property>
    <property name="text">
     <string>Copy</string>
    </property>
@@ -286,6 +329,10 @@
    </property>
   </action>
   <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/paste</normaloff>:/paste</iconset>
+   </property>
    <property name="text">
     <string>Paste</string>
    </property>
@@ -294,6 +341,10 @@
    </property>
   </action>
   <action name="actionDelete">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/delete</normaloff>:/delete</iconset>
+   </property>
    <property name="text">
     <string>Delete</string>
    </property>
@@ -497,6 +548,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

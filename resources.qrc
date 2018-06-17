@@ -6,5 +6,14 @@
         <file alias="fxc">img/fxc.png</file>
         <file alias="fxh">img/fxh.png</file>
         <file alias="col_w">img/col_w.png</file>
+        <file alias="exit">img/exit.png</file>
+        <file alias="new">img/new.png</file>
+        <file alias="open">img/open.png</file>
+        <file alias="save">img/save.png</file>
+        <file alias="saveAs">img/saveAs.png</file>
+        <file alias="copy">img/copy.png</file>
+        <file alias="cut">img/cut.png</file>
+        <file alias="delete">img/delete.png</file>
+        <file alias="paste">img/paste.png</file>
     </qresource>
 </RCC>

@@ -33,7 +33,7 @@ private slots:
     void open();
     void save();
     void saveAs();
-    void close();
+    void _close();
 
     // EDIT
 
